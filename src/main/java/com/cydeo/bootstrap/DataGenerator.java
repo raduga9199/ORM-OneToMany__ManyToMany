@@ -29,7 +29,7 @@ public class DataGenerator implements CommandLineRunner {
 
         Payment payment2 = new Payment(LocalDate.of(2022,4,25),new BigDecimal("100000"), Status.SUCCESS);
         PaymentDetail paymentDetail2 = new PaymentDetail(new BigDecimal("140000"),new BigDecimal("5000"),LocalDate.of(2022,4,26));
-        payment1.setPaymentDetail(paymentDetail2);
+        payment2.setPaymentDetail(paymentDetail2);
 
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
