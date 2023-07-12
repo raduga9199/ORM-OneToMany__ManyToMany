@@ -1,9 +1,11 @@
 package com.cydeo.bootstrap;
 
 import com.cydeo.enums.Status;
+import com.cydeo.model.Customer;
 import com.cydeo.model.Merchant;
 import com.cydeo.model.Payment;
 import com.cydeo.model.PaymentDetail;
+import com.cydeo.repository.CustomerRepository;
 import com.cydeo.repository.MerchantRepository;
 import com.cydeo.repository.PaymentRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -16,14 +18,17 @@ import java.time.LocalDate;
 public class DataGenerator implements CommandLineRunner {
 
     private final PaymentRepository paymentRepository;
-
     private final MerchantRepository merchantRepository;
+    private final CustomerRepository customerRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository) {
+
+    public DataGenerator(PaymentRepository paymentRepository,
+                         MerchantRepository merchantRepository,
+                         CustomerRepository customerRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
+        this.customerRepository = customerRepository;
     }
-
 
 
     @Override
@@ -46,6 +51,18 @@ public class DataGenerator implements CommandLineRunner {
         payment1.setMerchant(merchant1);
         payment2.setMerchant(merchant1);
 
+        Customer customer1 = new Customer("123 main st, Charlotte NC 28202",
+                                        "customer1@email.com",
+                                        "Alex",
+                                        "Barrow",
+                                        "alex_barrow");
+
+
+        payment1.setCustomer(customer1);
+        payment2.setCustomer(customer1);
+
+
+        customerRepository.save(customer1);
 
 
         merchantRepository.save(merchant1);

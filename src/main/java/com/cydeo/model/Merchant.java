@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "MERCHANTS")
+@Table(name = "Merchants")
 @Data
 @NoArgsConstructor
 public class Merchant {
